@@ -1,0 +1,27 @@
+body {
+	text-align: center;
+	font-family: 'comic sans ms';
+	color: #B449E9;
+}
+
+table {
+	align-self: center;
+}
+
+td {
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	border: 1px solid black;
+	font-size: 100px;
+	background-color: #C1E6F3;
+	border-radius: 15px;
+}
+
+.reset {
+	height: 50px;
+	width: 100px;
+	border-radius: 15px;
+	background-color: #69F669;
+	font-size: 15px
+}
