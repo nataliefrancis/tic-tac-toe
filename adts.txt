@@ -1,0 +1,5 @@
+I don't currently have enough JS code to determine what can be ADTs, however I think it can apply for the following future items:
+
+1. Turning the squares a different color once they get marked.
+2. The squares themselves could be made into ADTs, though I currently have them being made by CSS.
+3. the X's and O's.
