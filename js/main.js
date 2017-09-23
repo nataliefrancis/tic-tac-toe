@@ -2,6 +2,8 @@
 var xmoves = [];
 var omoves = [];
 var turn = 0;
+var counter = 0;
+var square = $('#gameBoard td');
 var winning = [
 	[1,2,3], [4,5,6], [7,8,9], 
 	[1,4,7], [2,5,8], [3,6,9],
@@ -13,28 +15,39 @@ $(document).ready(function() {
 	//Upon clicking a box, alternate between x's and o's//
 	$('#gameBoard td').on('click', function() {
 		if(turn %2 !== 0) {
-			$(this).html("X");
-			turn=1;
-			//$(this).attr('data-num').appendTo(xmoves);     //work on this line
-		//	let sqNum = $(this).dataset.num;
-		} else
+			omoves.push(parseInt(event.target.getAttribute("data-num"))); //pushes square value into array
 			$(this).html("O");
 			turn++;
+			checkWin(omoves, "O");
+		} else {
+			xmoves.push(parseInt(event.target.getAttribute("data-num")));
+			$(this).html("X");
+			turn++;
+			checkWin(xmoves, "X");
+		}	
 	});
 
-	//checking for win- I have an idea but can't get it to work//
-//	for (var i = 0, i < winning.length, i++) {
-//		if ($.inArray(winning[i], xmoves) > -1) {
-//			alert("X wins!");
-//		} else if ($.inArray(winning[i], omoves) > -1) {
-//			alert("O wins!");
-//		}	
-//	};
+		
+	function checkWin(player, name) {
+		for (var i = 0; i < winning.length; i++) { //checks through winning combo array
+			counter = 0;
+			for (var j = 0; j < winning[i].length; j++) //checks through player combo array
+				if(player.indexOf(winning[i][j]) !== -1) { //compares arrays
+        			counter++;
+				} if (counter === 3) {
+					alert(name + " wins!");
+				}	
+		}
+	};
 
 		//reset button//
 	$(':reset').click(function(){
 		$('td').empty();
+		xmoves = [];
+		omoves = [];
+		counter = 0;
+		turn = 0;
+		$('square').html(""); 
 	});	
-
 
 });
