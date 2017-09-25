@@ -14,6 +14,9 @@ $(document).ready(function() {
 
 	//Upon clicking a box, alternate between x's and o's//
 	$('#gameBoard td').on('click', function() {
+		while(this.hasChildNodes()) { //this won't allow a player to click on an already used square
+			return false;
+		}
 		if(turn %2 !== 0) {
 			omoves.push(parseInt(event.target.getAttribute("data-num"))); //pushes square value into array
 			$(this).html("O");
@@ -24,7 +27,7 @@ $(document).ready(function() {
 			$(this).html("X");
 			turn++;
 			checkWin(xmoves, "X");
-		}	
+		}
 	});
 
 		
